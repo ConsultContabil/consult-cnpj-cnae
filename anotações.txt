@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale-1.0">
+        <link rel="stylesheet" type="text/css" href="/static/styles_result.css">
+        <link rel="icon" type="image/png" href="/static/download.ico">
+        <img src="/static/color.png">
+        <title>Resultados</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="topnav">
+                <a href="https://consultcontabil.github.io/Programas_Consult_index/">Home</a>
+                <a href="https://consult-cnpj-6a5542ebb98a.herokuapp.com/">Consultar CNPJ</a>
+                <a class="active" href="https://consult-cnpj-6a5542ebb98a.herokuapp.com/">Resultados</a>
+                <a href="/consultar">Consultar CNAEs</a>
+                <a href="https://consultcontabil.com/">Sobre nós</a>
+            </div>
+            <div class="content-wrapper">
+                <div class="content">
+                    <h1>{{ resultado }}</h1>
+                    <h2>{{ nome_empresa }} - {{ cnpj }}</h2>
+                    {% if cnaes_encontrados %}
+                        <h3>CNAEs Encontrados:</h3>
+                        <div class="table">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>CNAE</th>
+                                        <th>Nome</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for cnae in cnaes_encontrados %}
+                                        <tr>
+                                            <td class="no-wrap">{{ cnae[0] }}</td>
+                                            <td>{{ cnae[1] }}</td>
+                                            {% if ctrl_dict[cnae[0]] == 1 %}
+                                                <td class="aprovado">{{ cnae[2] }}</td>
+                                            {% else %}
+                                                <td class="negado">{{ cnae[2] }}</td>
+                                            {% endif %}
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    {% endif %}
+                    <p>Cnaes consultados segundo a PORTARIA ME Nº 7.163, DE 21 DE JUNHO DE 2021, para mais informações acesse <img class="link" src="/static/link-externo.png"><a class="legisl" target="_blank" href="https://www.in.gov.br/en/web/dou/-/portaria-me-n-7.163-de-21-de-junho-de-2021-327649097">aqui</a> a legislação completa</p>
+                    <br>
+                    <a href="/"><button class="go">Nova Consulta</button></a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

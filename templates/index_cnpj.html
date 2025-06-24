@@ -1,0 +1,179 @@
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Programas CNAEs</title>
+        <link href="/static/output.css" rel="stylesheet">
+        <link rel="icon" type="image/png" href="/static/download.ico">
+    </head>
+    <body class="lg:bg-fundo bg-center bg-opacity-90 bg-no-repeat bg-cel_fun">
+        <div>
+            <div class="relative overflow-hidden">
+                <header class="relative">
+                    <div class="bg-red-800 pt-7">
+                        <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
+                            <div class="flex items-center mb-3 flex-1">
+                                <div class="flex items-center justify-between w-full md:w-auto">
+                                    <a href="https://consultcontabil.github.io/Programas_Consult_index/" target="_blank">
+                                        <span class="sr-only">Workflow</span>
+                                        <img class="h-8 w-auto sm:h-10"
+                                            src="/static/logo-consult-contabil (1).png"
+                                            alt>
+                                    </a>
+                                </div>
+                                <div class="hidden space-x-8 md:flex md:ml-10">
+                                    <a href="https://consultcontabil.github.io/Programas_Consult_index/" class="text-base font-medium text-white hover:text-gray-300">Home</a>
+                                    <a href="https://consultcontabil.github.io/ferramentas_contabeis/" class="text-base font-medium text-white hover:text-gray-300">Mais ferramentas</a>
+                                    <a href="#" class="text-base font-medium text-white hover:text-gray-300">Sobre nós</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+                <div id="error-popup" class="rounded-md bg-yellow-50 p-4 mt-5" style="display: none;">
+                    <div class="flex">
+                        <div class="flex-shrink-0">
+                            <!-- Heroicon name: solid/exclamation -->
+                            <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <h3 class="text-sm font-medium text-yellow-800">Atenção necessária</h3>
+                            <div class="mt-2 text-sm text-yellow-700">
+                                <p id="error-message"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="mt-3 text-sm text-yellow-800 font-bold border-2 rounded-lg border-yellow-200 bg-yellow-100 w-16" onclick="document.getElementById('error-popup').classList.add('hidden')">Fechar</button>
+                </div>
+                <!-- This example requires Tailwind CSS v2.0+ -->
+                <main>
+                    <div class="pt-10 sm:pt-64 lg:pt-8 lg:overflow-hidden">
+                        <div class="mx-auto max-w-7xl lg:px-8">
+                            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                                <div class="mx-auto max-w-md px-4 sm:max-w-2xl sm:px-6 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+                                    <div class="lg:py-24">
+                                        <a href="/index_cnae"
+                                        class="inline-flex items-center text-black bg-gray-200 rounded-full p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-gray-700">
+                                            <span
+                                                class="px-3 py-0.5 text-white text-xs font-semibold leading-5 uppercase tracking-wide bg-gradient-to-r from-red-500 to-orange-300 rounded-full">CNPJ
+                                            </span>
+                                            <span 
+                                                class="ml-4 text-sm">Buscar por CNAE
+                                            </span>
+                                            <svg class="ml-2 w-5 h-5 text-gray-500"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                                aria-hidden="true">
+                                                <path fill-rule="evenodd"
+                                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                    clip-rule="evenodd" />
+                                            </svg>
+                                        </a>
+                                        <h1 class="text-4xl tracking-tight font-extrabold text-red-600 sm:mt-5 sm:text-6xl xl:text-6xl">
+                                            <span class="block">Consulta</span>
+                                            <span class="pb-3 block bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-red-800 sm:pb-5">CNPJ</span>
+                                        </h1>
+                                        <form method="post" action="/default_route" id="dynamic-form">
+                                            <input id="cnpj" name="cnpj" maxlength="18" class="w-72 h-7 placeholder:text-gray-800 mx-auto my-4 bg-transparent border border-l-0 border-r-0 border-b-2 border-t-0 border-red-900" placeholder="Insira o CNPJ para a busca" required>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="px-20 grid gap-2 lg:grid-cols-4">
+                        <a href="/verificar_dispensa" class="consulta"><span class="bg-gray-100 rounded-full px-5 inline-flex items-center hover:bg-gray-300">
+                            <svg width="80px" height="80px" viewBox="-563.2 -563.2 2150.40 2150.40" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="1.024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M460 459.3m-245.2 0a245.2 245.2 0 1 0 490.4 0 245.2 245.2 0 1 0-490.4 0Z" fill="#ffe7d1"></path><path d="M460 719c-69.4 0-134.6-27-183.6-76.1s-76.1-114.3-76.1-183.6c0-69.4 27-134.6 76.1-183.6s114.3-76.1 183.6-76.1c69.4 0 134.6 27 183.6 76.1s76.1 114.3 76.1 183.6c0 69.4-27 134.6-76.1 183.6S529.4 719 460 719z m0-490.4c-61.6 0-119.6 24-163.1 67.6-43.6 43.6-67.6 101.5-67.6 163.1s24 119.6 67.6 163.1C340.4 666 398.4 690 460 690s119.6-24 163.1-67.6c43.6-43.6 67.6-101.5 67.6-163.1s-24-119.6-67.6-163.1c-43.5-43.6-101.5-67.6-163.1-67.6z" fill="#d11f1f"></path><path d="M640.6 630.6c8.7-8.7 22.8-8.7 31.5 0L802 760.5c8.6 8.9 8.3 23-0.5 31.5-8.6 8.3-22.3 8.3-31 0L640.6 662.1c-8.4-8.6-8.1-22.6 0-31.5z" fill="#d11f1f"></path></g></svg>
+                            <p>Verificação de dispensa de Licenciamento</p>
+                        </span></a>
+                        <a href="/verificar_cadastur" class="consulta"><span class="bg-gray-100 rounded-full px-5 inline-flex items-center hover:bg-gray-300">
+                            <svg width="80px" height="80px" viewBox="-563.2 -563.2 2150.40 2150.40" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="1.024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M460 459.3m-245.2 0a245.2 245.2 0 1 0 490.4 0 245.2 245.2 0 1 0-490.4 0Z" fill="#ffe7d1"></path><path d="M460 719c-69.4 0-134.6-27-183.6-76.1s-76.1-114.3-76.1-183.6c0-69.4 27-134.6 76.1-183.6s114.3-76.1 183.6-76.1c69.4 0 134.6 27 183.6 76.1s76.1 114.3 76.1 183.6c0 69.4-27 134.6-76.1 183.6S529.4 719 460 719z m0-490.4c-61.6 0-119.6 24-163.1 67.6-43.6 43.6-67.6 101.5-67.6 163.1s24 119.6 67.6 163.1C340.4 666 398.4 690 460 690s119.6-24 163.1-67.6c43.6-43.6 67.6-101.5 67.6-163.1s-24-119.6-67.6-163.1c-43.5-43.6-101.5-67.6-163.1-67.6z" fill="#d11f1f"></path><path d="M640.6 630.6c8.7-8.7 22.8-8.7 31.5 0L802 760.5c8.6 8.9 8.3 23-0.5 31.5-8.6 8.3-22.3 8.3-31 0L640.6 662.1c-8.4-8.6-8.1-22.6 0-31.5z" fill="#d11f1f"></path></g></svg>
+                            <p>Consulta viabilidade Cadastur</p>
+                        </span></a>
+                        <a href="/verificar_risco" class="consulta"><span class="bg-gray-100 rounded-full px-5 inline-flex items-center hover:bg-gray-300">
+                            <svg width="80px" height="80px" viewBox="-563.2 -563.2 2150.40 2150.40" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="1.024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M460 459.3m-245.2 0a245.2 245.2 0 1 0 490.4 0 245.2 245.2 0 1 0-490.4 0Z" fill="#ffe7d1"></path><path d="M460 719c-69.4 0-134.6-27-183.6-76.1s-76.1-114.3-76.1-183.6c0-69.4 27-134.6 76.1-183.6s114.3-76.1 183.6-76.1c69.4 0 134.6 27 183.6 76.1s76.1 114.3 76.1 183.6c0 69.4-27 134.6-76.1 183.6S529.4 719 460 719z m0-490.4c-61.6 0-119.6 24-163.1 67.6-43.6 43.6-67.6 101.5-67.6 163.1s24 119.6 67.6 163.1C340.4 666 398.4 690 460 690s119.6-24 163.1-67.6c43.6-43.6 67.6-101.5 67.6-163.1s-24-119.6-67.6-163.1c-43.5-43.6-101.5-67.6-163.1-67.6z" fill="#d11f1f"></path><path d="M640.6 630.6c8.7-8.7 22.8-8.7 31.5 0L802 760.5c8.6 8.9 8.3 23-0.5 31.5-8.6 8.3-22.3 8.3-31 0L640.6 662.1c-8.4-8.6-8.1-22.6 0-31.5z" fill="#d11f1f"></path></g></svg>
+                            <p>Consulta grau de risco (NR-04)</p>
+                        </span></a>
+                        <a href="/verificar_dispensa_ie" class="consulta"><span class="bg-gray-100 rounded-full px-5 inline-flex items-center hover:bg-gray-300">
+                            <svg width="80px" height="80px" viewBox="-563.2 -563.2 2150.40 2150.40" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000" stroke-width="1.024"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M460 459.3m-245.2 0a245.2 245.2 0 1 0 490.4 0 245.2 245.2 0 1 0-490.4 0Z" fill="#ffe7d1"></path><path d="M460 719c-69.4 0-134.6-27-183.6-76.1s-76.1-114.3-76.1-183.6c0-69.4 27-134.6 76.1-183.6s114.3-76.1 183.6-76.1c69.4 0 134.6 27 183.6 76.1s76.1 114.3 76.1 183.6c0 69.4-27 134.6-76.1 183.6S529.4 719 460 719z m0-490.4c-61.6 0-119.6 24-163.1 67.6-43.6 43.6-67.6 101.5-67.6 163.1s24 119.6 67.6 163.1C340.4 666 398.4 690 460 690s119.6-24 163.1-67.6c43.6-43.6 67.6-101.5 67.6-163.1s-24-119.6-67.6-163.1c-43.5-43.6-101.5-67.6-163.1-67.6z" fill="#d11f1f"></path><path d="M640.6 630.6c8.7-8.7 22.8-8.7 31.5 0L802 760.5c8.6 8.9 8.3 23-0.5 31.5-8.6 8.3-22.3 8.3-31 0L640.6 662.1c-8.4-8.6-8.1-22.6 0-31.5z" fill="#d11f1f"></path></g></svg>
+                            <p>Verificação de dispensa de inscrição estadual</p>
+                        </span></a>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </body>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('dynamic-form');
+
+            // Adiciona um ouvinte de evento de clique para cada tag <a>
+            document.querySelectorAll('a.consulta').forEach(function(anchor) {
+                anchor.addEventListener('click', function(event) {
+                    // Evita o comportamento padrão da tag <a> para não recarregar a página
+                    event.preventDefault();
+
+                    // Obtém o valor do atributo href da tag <a> clicada
+                    const route = anchor.getAttribute('href');
+
+                    // Exibe no console para verificar se a rota está correta
+                    console.log('Rota clicada:', route);
+
+                    // Atualiza o valor do atributo action do formulário
+                    form.action = route;
+
+                    // Exibe no console para verificar se o atributo action foi atualizado
+                    console.log('Atributo action atualizado:', form.action);
+
+                    // Submete o formulário
+                    form.submit();
+                });
+            });
+        });
+
+        function showErrorPopup(message) {
+            console.log("funciona o show")
+            const popup = document.getElementById('error-popup');
+            const errorMessage = document.getElementById('error-message');
+
+            errorMessage.textContent = message;
+            popup.style.display = '';
+            // Defina um temporizador para ocultar o pop-up após um período de tempo desejado, por exemplo, 5 segundos.
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 5000);  // Tempo em milissegundos (5 segundos neste exemplo).
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            var error_popup ='{{ error_popup }}';
+            if (error_popup == 'True'){
+                console.log("entrou no if")
+                const errorMessage = "{{ resultado|e }}";
+                showErrorPopup(errorMessage);}
+        });
+        function formatCNPJ(cnpj) {
+            cnpj = cnpj.replace(/\D/g, '');
+            cnpj = cnpj.replace(/^(\d{2})(\d)/, '$1.$2');
+            cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, '$1.$2.$3');
+            cnpj = cnpj.replace(/\.(\d{3})(\d)/, '.$1/$2');
+            cnpj = cnpj.replace(/(\d{4})(\d)/, '$1-$2');
+            return cnpj;
+        }
+
+        document.getElementById('cnpj').addEventListener('input', function (e) {
+            var target = e.target,
+                position = target.selectionStart,
+                length = target.value.length;
+
+            target.value = formatCNPJ(target.value);
+
+            // Mantém o cursor na mesma posição
+            target.selectionEnd = target.selectionStart = position + (target.value.length - length);
+        });
+
+    </script>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html class="h-full" lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Resultado</title>
+        <link href="/static/output.css" rel="stylesheet">
+    </head>
+    <body class="lg:bg-fundo bg-center bg-opacity-90 bg-no-repeat bg-cel_fun">
+        <div>
+            <div class="relative overflow-hidden">
+                <header class="relative">
+                    <div class="bg-red-800 pt-7">
+                        <nav class="relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6" aria-label="Global">
+                            <div class="flex items-center mb-3 flex-1">
+                                <div class="flex items-center justify-between w-full md:w-auto">
+                                    <a href="#">
+                                        <span class="sr-only">Workflow</span>
+                                        <img class="h-8 w-auto sm:h-10"
+                                            src="/static/logo-consult-contabil (1).png"
+                                            alt>
+                                    </a>
+                                </div>
+                                <div class="hidden space-x-8 md:flex md:ml-10">
+                                    <a href="https://consultcontabil.github.io/Programas_Consult_index/" class="text-base font-medium text-white hover:text-gray-300">Home</a>
+                                    <a href="https://consultcontabil.github.io/ferramentas_contabeis/" class="text-base font-medium text-white hover:text-gray-300">Mais ferramentas</a>
+                                    <a href="#" class="text-base font-medium text-white hover:text-gray-300">Sobre nós</a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+                <main>
+                    <div class="pt-1 sm:pt-10 lg:pt-5 lg:overflow-hidden">
+                        <div class="mx-auto max-w-6xl lg:px-8">
+                            <div class="ml-8">
+                                <h2 class="text-black text-3xl font-semibold">{{ nome_empresa }} <p class="text-black text-2xl mt-4 mb-2"> {{ cnpj }} </p></h2></div>
+                            <div class="lg:grid lg:grid-cols-2 lg:gap-8">
+                                <div class="relative mx-auto max-w-md px-4 sm:max-w-4xl sm:px-6 sm:pt-9 sm:text-center lg:px-0 lg:text-left lg:flex lg:items-center">
+                                    <div class="lg:pb-[1rem]">
+                                        <!-- This example requires Tailwind CSS v2.0+ -->
+                                        <style>
+                                            thead{
+                                                background-color: #1784b6;
+                                                color: aliceblue;
+                                                opacity: 0.7;
+                                                border-radius: 8px;
+                                            }
+                                            th, td{
+                                                padding: 10px;
+                                                text-align: left;
+                                            }
+                                            td{
+                                                background-color: white;
+                                            }
+                                        </style>
+                                        <div class="w-auto bg-gray-300 overflow-auto shadow rounded-lg divide-y divide-gray-200 bg-opacity-40">
+                                            <div class="px-4 py-5 sm:px-6 sm:pt-9">
+                                                <!-- Content goes here -->
+                                                <!-- We use less vertical padding on card headers on desktop than on body sections -->
+                                                {% if cnaes_encontrados %}
+                                                <h3 class="lg:text-3xl text-xl font-bold opacity-100">CNAE's Encontrados:</h3>
+                                            </div>
+                                            <div class="px-4 py-5 sm:p-6 opacity-100">
+                                                <div class="px-4 sm:px-6 lg:px-8">
+                                                    <div class="-mx-4 overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:-mx-6 md:mx-0 md:rounded-lg">
+                                                        <table class="min-w-full divide-y divide-gray-300 rounded-md sm:rounded-md">
+                                                            <thead class="bg-gray-50">
+                                                                <tr class="font-bold">
+                                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">CNAE</th>
+                                                                    <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 lg:table-cell">Nome</th>
+                                                                    <th scope="col" class="hidden px-3 py-3.5 text-left text-sm font-semibold text-gray-900 sm:table-cell">Atividades Turísticas</th>
+                                                                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Status</th>
+                                                                    </th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="divide-y divide-gray-200 bg-white">
+                                                                {% for cnae in cnaes_encontrados %}
+                                                                <tr>
+                                                                    <td class="w-full max-w-0 py-4 pl-4 pr-3 text-sm whitespace-nowrap font-medium text-gray-900 sm:w-auto sm:max-w-none sm:pl-6">
+                                                                        {{ cnae[0] }}
+                                                                        <dl class="font-normal lg:hidden">
+                                                                            <dt class="sr-only">Nome</dt>
+                                                                            <dd class="mt-1 truncate text-gray-700">{{ cnae[1] }}</dd>
+                                                                            <dt class="sr-only sm:hidden">Atividades Turísticas</dt>
+                                                                            <dd class="mt-1 truncate text-gray-500 sm:hidden">{{ cnae[3] }}</dd>
+                                                                        </dl>
+                                                                        </td>
+                                                                        <td class="hidden px-3 py-4 whitespace-nowrap text-sm text-gray-500 lg:table-cell">{{ cnae[1] }}</td>
+                                                                        <td class="hidden px-3 py-4 text-sm text-gray-500 sm:table-cell">{{ cnae[3] }}</td>
+                                                                        {% if ctrl_dict[cnae[0]] == 1 %}
+                                                                            <td class="px-3 py-4 text-sm bg-green-300 bg-opacity-40">{{ cnae[2] }}</td>
+                                                                        {% else %}
+                                                                            <td class="px-3 py-4 text-sm bg-red-300 bg-opacity-40">{{ cnae[2] }}</td>
+                                                                        {% endif %}
+                                                                    </td>
+                                                                </tr>
+                                                                {% endfor %}
+                                                            <!-- More people... -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    {% if resultado %}
+                                                    <h3 class="mt-3 font-bold">{{resultado}}</h3>
+                                                    {% endif %}
+                                                    {%endif%}
+                                                </div>
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid">
+                                <div class="text-center pb-1">
+                                    <p>
+                                        As empresas e profissionais cadastrados no Cadastur estão aptos ao exercício de suas atividades, conforme a <a href="https://www.gov.br/empresas-e-negocios/pt-br/redesim/ja-possuo-pessoa-juridica/registro_no_cadastur/voce-que-e-um-microempreendedor-individual-confira-a-lista-de-ocupacoes-para-cadastro-no-cadastur"
+                                        class="font-medium underline" target="_blank">Lei 11.771/2008</a>.</p>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <a href="/"><button class="font-semibold sm:text-4xl lg:w-auto px-2 py-2 border rounded md text-center bg-red-800 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50">Nova Consulta</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+            
+        </div>
+    </body>
+</html>
+
+
+
