@@ -1,5 +1,7 @@
 # Consult CNPJ CNAE
 
+Link: https://consult-cnpj-cnae-a03a980bcb68.herokuapp.com/
+
 Uma aplicação web Flask para consulta de CNAEs (Classificação Nacional de Atividades Econômicas) através de CNPJ, com funcionalidades para verificação de dispensa de licenciamento e inscrição estadual.
 
 ## 📋 Descrição
